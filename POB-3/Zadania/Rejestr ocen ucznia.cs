@@ -17,7 +17,7 @@ namespace Rejerstr_ocen_ucznia
     {
         static void Main(string[] args)
         {
-            Uczen uczen = new Uczen();
+            Uczen uczen = new Uczen("Szymon Grygiel", 378301, 0.0);
             while (true)
             {
                 Console.WriteLine("\n--- MENU ---");
