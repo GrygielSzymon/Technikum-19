@@ -17,7 +17,7 @@ namespace Symulator_konta_bankowego
     {
         static void Main(string[] args)
         {
-            Kontobankowe kontobankowe = new Kontobankowe();
+            Kontobankowe kontobankowe = new Kontobankowe(37381367,"Szymon Grygiel", 0.0);
 
             while (true)
             {
