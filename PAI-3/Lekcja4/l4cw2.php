@@ -15,8 +15,11 @@
 
     <?php
 
+    $nazwa1 = "placek po węgiersku";
     $liczba1 = 2;
     $cena1a = 15.90;
+    
+    $nazwa2 = "pierogi zbójnickie";
     $liczba2 = 1;
     $cena2a = 12.90;
     $koszta = ($liczba1 * $cena1a) + ($liczba2 * $cena2a);
@@ -34,12 +37,12 @@
             <th>cena</th>
         </tr>
         <tr>
-            <td>placek po węgiersku</td>
+            <td>$nazwa1</td>
             <td>$liczba1</td>
             <td>$cena1</td>
         </tr>
         <tr>
-            <td>pierogi zbójnickie</td>
+            <td>$nazwa2</td>
             <td>$liczba2</td>
             <td>$cena2</td>
         </tr>

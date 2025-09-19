@@ -13,8 +13,8 @@
         $obwod = ($dlugosc * 2) + ($szerokosc * 2);
         $pole = ($dlugosc * $szerokosc);
 
-        echo "Obwód: ", $obwod, "<br>";
-        echo "Pole: ", $pole;
+        echo "Obwód: <strong>" . $obwod . "</strong><br>";
+        echo "Pole: <strong>" . $pole . "</strong>";
     ?>
 </body>
 </html>
