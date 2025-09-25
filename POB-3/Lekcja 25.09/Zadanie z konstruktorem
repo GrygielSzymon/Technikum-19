@@ -1,0 +1,37 @@
+//Utwórz klasę Produkt:
+//Pola: Nazwa, Cena
+//Konstruktor przyjmujący te wartości
+
+//Stwórz klasę Napoj dziedziczącą po Produkt, z dodatkowym polem:
+//Objetosc
+
+//Dodaj konstruktor dla klasy Napoj, który korzysta z konstruktora klasy bazowej.
+namespace zadanie
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Napoj napoj = new Napoj("Woda", 12, 1000);
+        }
+    }
+    public class Produkt
+    {
+        public string Nazwa {get; set;}
+        public double Cena {get; set;}
+
+        public Produkt(string nazwa, double cena)
+        {
+            Nazwa = nazwa;
+            Cena = cena;
+        }
+    }
+    public class Napoj : Produkt
+    {
+        public double Objetosc {get; set;}
+        public Napoj(string nazwa, double cena, double objetosc) : base(nazwa, cena)
+        {
+            Objetosc = objetosc;
+        }
+    }
+}
