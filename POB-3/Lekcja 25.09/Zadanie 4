@@ -1,0 +1,67 @@
+//Stwórz interfejs IOsobowy:
+//Metoda ZaladujPasazera(string imie)
+
+//Stwórz interfejs ITowarowy:
+//Metoda ZaladujTowar(string nazwaTowaru)
+
+//Stwórz klasę PojazdBazowy:
+//Właściwości: Marka, Model
+//Konstruktor przyjmujący markę i model
+
+//Stwórz klasę Statek, która:
+//Dziedziczy po PojazdBazowy
+//Implementuje IOsobowy i ITowarowy
+
+W metodach wypisuje komunikaty np. „Załadowano pasażera Jan” / „Załadowano towar Zboże”
+namespace zadanie2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Statek statek = new Statek("Titanic", "I");
+            statek.ZaladujPasazera("Jan");
+            statek.ZaladujTowar("Zboże");
+
+        }
+    }
+    public interface IOsobowy
+    {
+        void ZaladujPasazera(string imie);
+    }
+    public interface ITowarowy
+    {
+        void ZaladujTowar(string nazwaTowaru);
+    }
+
+    public class PojazdBazowy
+    {
+        public string Marka { get; set; }
+        public string Model { get; set; }
+
+        public PojazdBazowy(string marka, string model)
+        {
+            Marka = marka;
+            Model = model;
+        }
+    }
+
+    public class Statek : PojazdBazowy, IOsobowy, ITowarowy 
+    {
+        public Statek(string marka, string model) : base(marka, model)
+        {
+        }
+        public Statek(Statek statek) : base(statek.Marka, statek.Model) 
+        {
+        }
+
+        public void ZaladujPasazera(string imie)
+        {
+            Console.WriteLine("Załadowano pasażera: " + imie);
+        }
+        public void ZaladujTowar(string nazwaTowaru)
+        {
+            Console.WriteLine("Załadowano towar: " + nazwaTowaru);
+        }
+    }
+}
