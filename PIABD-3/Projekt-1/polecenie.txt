@@ -1,0 +1,36 @@
+Zaprojektuj bazę danych dla instytucji znanej jako :
+WARSZTAT SAMOCHODOWY, która organizuje i 
+przeprowadza naprawy samochodów, prowadzi magazyn części
+zamiennych, gromadzi informacje o swoich klientach, naprawach,
+fakturach zakupowych i sprzedażowych, warsztat jest VAT'owcem,
+oraz ewidencjonuje swoich pracowników i dostawców.
+
+Założenia organizacyjne pracy warsztatu:
+
+1.Klient może mieć kilka samochodów.
+2.Każda naprawa kończy się fakturą lub paragonem.
+3.Każda naprawa może pochłonąć kilka częsci zamiennych.
+4.Każdy dzień kończy się zestawieniem sprzedaży tzw.raportem
+  kasowym.
+5.Każdemu pracownikowi ewidencjonowany jest czas pracy.
+6.Każdemu klientowi można wysłać zaproszenie e-mailowe lub SMS:
+   w ramach różnych kampanii reklamowych.
+7.W warsztacie można prowadzić przeglądy/badania techniczne.
+8.Klient może zmienić adres zamieszkania.
+9.Każdy pracownik może ubezpieczać dzieci lub małżonka.
+10.Każda pracownica może zmienić stan cywilny.
+11.Liczbę pracowników ograniczamy do 20 osób.
+12.W warsztacie są 3 stanowiska naprawcze oraz myjnia.
+13.Pracę warsztatu zorganizowano jako dwuzmianową, bez pracy
+     nocnej.
+14.Warsztat wyposażono w cztery komputery, połączone w sieć, korzystające ze wspólnej
+     Bazy Danych.
+
+
+Bazę danych zdefiniuj w widoku tabel do dnia 30-października-2025.
+Nazwy kolumn w tabelach powinny  być unikalne.
+Pomiędzy tabelami zaproponuj relacje.
+Użyj dowolnego narzędzia : MySQL, MS ACCESS, SQL Server.
+Gotowy projekt bazy prześlij przy pomocy dziennika elektronicznego.
+
+Andrzej Szulta.
