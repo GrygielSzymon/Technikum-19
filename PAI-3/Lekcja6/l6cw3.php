@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Formatowanie tekstu</title>
 </head>
 <body>
-
-
     <?php
-        function textFormatting($text, $color = 'blue', $font = 'Arial', $size = '24px') {
-            echo "<span style=\"color: $color; font-family: $font; font-size: $size;\">$text</span><br>";
+        function textFormat($text) {
+            $color = "blue";
+            $font = "Arial";
+            $size = "20px";
+
+            echo "<p style='color: $color; font-family: $font; font-size: $size;'>$text</p>";
         }
 
-        textFormatting('Tekst');
-        textFormatting('A jak okaże się, że nie działa?', 'green', 'Verdana', '10px');
-        textFormatting('Ależ działa!!!', 'red', 'Scali', '20px');
+        textFormat("Ale jak okaże się, że nie działa?");
+        textFormat("Ależ działa!!!");
     ?>
-
 </body>
 </html>
