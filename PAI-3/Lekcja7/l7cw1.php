@@ -39,7 +39,7 @@
             $message = "Znak 'ą' nie występuje w tekście.";
         }
         //e
-        $last24 = substr($text, -24);
+        $last24 = mb_substr($text, -24);
         //f
         $lines = explode("\n", $text);
         $lastText = trim(end($lines));
@@ -47,12 +47,22 @@
         $textFromJ = substr($text, $JPos);
         //g
         $replacing = str_replace("łagodnie", "krzywo", $text);
-        $replacingPrint = nl2br($replacing);
         //h
         $modifiedText = str_replace("Ooo, ", "", $text);
         //i
-        
-
+        $text_i = str_replace("Ja łagodnie uśmiechnięta", "", $text);
+        //j
+        $tekst_j = "To piosenka Sanah: " . $text;
+        //k
+        $text_k = mb_strtoupper($text);
+        //l.1
+        $words = explode(" ", $text);
+        $wordsP = print_r($words, true);
+        //l.2
+        $wordsL = preg_split('/\s+/', $text);
+        $wordsLP = print_r($wordsL, true);
+        //m
+        $textstars = implode("***", preg_split('/\s+/', $text));
 
 
 
@@ -71,20 +81,23 @@
                 Ostatnia linijka: $lastText <br>
                 Pozycja ostatniej litery "J" to: $JPos
             <h1>Zadania 1.g</h1>
-                $replacingPrint
+                <pre>$replacing</pre>
             <h1>Zadania 1.h</h1>
                 <pre>$modifiedText</pre>
             <h1>Zadania 1.i</h1>
-
+                <pre>$text_i</pre>
             <h1>Zadania 1.j</h1>
-
+                <pre>$tekst_j</pre>
             <h1>Zadania 1.k</h1>
-
-            <h1>Zadania 1.l</h1>
-
+                <pre>$text_k</pre>
+            <h1>Zadania 1.l.1</h1>
+                <pre>$wordsP</pre>
+            <h1>Zadania 1.l.2</h1>
+                <pre>$wordsLP</pre>
             <h1>Zadania 1.m</h1>
-
+                <pre>$textstars</pre>
             <h1>Zadania 1.n</h1>
+
             END;
     ?>
 
