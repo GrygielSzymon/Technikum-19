@@ -23,13 +23,12 @@
         //a
         $textPrint = nl2br($text);
         //b
-        $charCount = strlen($text);
+        $charCount = mb_strlen($text);
         $wordCount = str_word_count($text);
         $charFormatted = number_format($charCount, 2, ',', ' ');
         $wordFormatted = number_format($wordCount, 3, ',', ' ');
         //c
-        $pos = strpos($text, "deszcz");
-        $textToDeszcz = substr($text, 0, $pos + strlen("deszcz"));
+        $textToDeszcz = strstr($text, "deszcz", true);
         //d
         $strpos = strpos($text, "ą");
         if ($strpos == TRUE) {
@@ -44,7 +43,7 @@
         $lines = explode("\n", $text);
         $lastText = trim(end($lines));
         $JPos = strrpos($text, $lastText);
-        $textFromJ = substr($text, $JPos);
+        $textFromJ = mb_substr($text, $JPos);
         //g
         $replacing = str_replace("łagodnie", "krzywo", $text);
         //h
@@ -52,7 +51,7 @@
         //i
         $text_i = str_replace("Ja łagodnie uśmiechnięta", "", $text);
         //j
-        $tekst_j = "To piosenka Sanah: " . $text;
+        $tekst_j = substr_replace($text, "To piosenka Sanah: ", 0, 0);
         //k
         $text_k = mb_strtoupper($text);
         //l.1
@@ -63,19 +62,7 @@
         $wordsLP = print_r($wordsL, true);
         //m
         $textstars = str_replace(" ", "***", $text);
-        //n
-        echo "<h2>Zadanie 1.n.1</h2>";
-        $linesN = explode("\n", $text);
-        for ($i = 0; $i < 5; $i++) {
-            echo $linesN[$i] . "<br>";
-        }
-
-        echo "<h2>Zadanie 1.n.2</h2>";
-        $linesN = preg_split('/\r?\n/', $text);
         
-        for ($i = 0; $i <= 4; $i++) {
-            echo $linesN[$i] . "<br>";
-        }
 
 
 
@@ -109,8 +96,20 @@
                 <pre>$wordsLP</pre>
             <h1>Zadanie 1.m</h1>
                 <pre>$textstars</pre>
-
             END;
+            //n
+        echo "<h1>Zadanie 1.n.1</h1>";
+        $linesN = explode("\n", $text);
+        for ($i = 0; $i < 5; $i++) {
+            echo $linesN[$i] . "<br>";
+        }
+
+        echo "<h1>Zadanie 1.n.2</h1>";
+        $linesN = preg_split('/\R+/', $text);
+        
+        for ($i = 0; $i <= 4; $i++) {
+            echo $linesN[$i] . "<br>";
+        }
     ?>
 
 </body>
