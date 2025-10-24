@@ -62,44 +62,57 @@
         $wordsL = preg_split('/\s+/', $text);
         $wordsLP = print_r($wordsL, true);
         //m
-        $textstars = implode("***", preg_split('/\s+/', $text));
+        $textstars = str_replace(" ", "***", $text);
+        //n
+        echo "<h2>Zadanie 1.n.1</h2>";
+        $linesN = explode("\n", $text);
+        for ($i = 0; $i < 5; $i++) {
+            echo $linesN[$i] . "<br>";
+        }
+
+        echo "<h2>Zadanie 1.n.2</h2>";
+        $linesN = preg_split('/\r?\n/', $text);
+        
+        for ($i = 0; $i <= 4; $i++) {
+            echo $linesN[$i] . "<br>";
+        }
 
 
 
         echo <<<END
-            <h1>Zadania 1.a</h1>
+            <h1>Zadanie 1.a</h1>
                 $textPrint
-            <h1>Zadania 1.b</h1>
+            <h1>Zadanie 1.b</h1>
                 Tekst składa się z $charFormatted znaków oraz $wordFormatted słów
-            <h1>Zadania 1.c</h1>
+            <h1>Zadanie 1.c</h1>
                 $textToDeszcz
-            <h1>Zadania 1.d</h1>
+            <h1>Zadanie 1.d</h1>
                 $message
-            <h1>Zadania 1.e</h1>
+            <h1>Zadanie 1.e</h1>
                 $last24
-            <h1>Zadania 1.f</h1>
+            <h1>Zadanie 1.f</h1>
                 Ostatnia linijka: $lastText <br>
                 Pozycja ostatniej litery "J" to: $JPos
-            <h1>Zadania 1.g</h1>
+            <h1>Zadanie 1.g</h1>
                 <pre>$replacing</pre>
-            <h1>Zadania 1.h</h1>
+            <h1>Zadanie 1.h</h1>
                 <pre>$modifiedText</pre>
-            <h1>Zadania 1.i</h1>
+            <h1>Zadanie 1.i</h1>
                 <pre>$text_i</pre>
-            <h1>Zadania 1.j</h1>
+            <h1>Zadanie 1.j</h1>
                 <pre>$tekst_j</pre>
-            <h1>Zadania 1.k</h1>
+            <h1>Zadanie 1.k</h1>
                 <pre>$text_k</pre>
-            <h1>Zadania 1.l.1</h1>
+            <h1>Zadanie 1.l.1</h1>
                 <pre>$wordsP</pre>
-            <h1>Zadania 1.l.2</h1>
+            <h1>Zadanie 1.l.2</h1>
                 <pre>$wordsLP</pre>
-            <h1>Zadania 1.m</h1>
+            <h1>Zadanie 1.m</h1>
                 <pre>$textstars</pre>
-            <h1>Zadania 1.n</h1>
 
             END;
     ?>
 
 </body>
+
 </html>
