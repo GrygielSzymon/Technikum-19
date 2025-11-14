@@ -15,15 +15,15 @@
     <table>
         <?php
         for ($height = 1; $height <= 10; $height++) {
-        echo "<tr>\n";
+            echo "<tr>\n";
 
-        for ($width = 1; $width <= 10; $width++) {
-        echo "<td>";
-        echo $width * $height;
-        echo "</td>\n";
-        }
+                for ($width = 1; $width <= 10; $width++) {
+                    echo "<td>";
+                    echo $width * $height;
+                    echo "</td>\n";
+                }
 
-        echo "</tr>\n";
+            echo "</tr>\n";
         }
         ?>
 </table>

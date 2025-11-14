@@ -5,42 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body {
+        body{
             line-height: 200%;
         }
     </style>
 </head>
 <body>
-    <h1>Równanie kwadratowe</h1>
-    
-    <form method="POST">
-        <label>ax<sup>2</sup> + bx + c = 0</label><br>
+    <h2>Równanie kwadratowe</h2>
+    <p><strong>ax<sup>2</sup> + bx + c = 0</strong></p>
 
-        <label>Podaj a:</label>
-        <input type="number" id="numA" name="numA" required><br>
-
-        <label>Podaj b:</label>
-        <input type="number" id="numB" name="numB" required><br>
-
-        <label>Podaj c:</label>
-        <input type="number" id="numC" name="numC" required><br>
-
+    <form method="post">
+        <label>
+            Podaj liczbę a:
+            <input type="text" name="a" required>
+        </label>
+        <br>
+        <label>
+            Podaj liczbę b:
+            <input type="text" name="b" required>
+        </label>
+        <br>
+        <label>
+            Podaj liczbę c:
+            <input type="text" name="c" required>
+        </label>
+        <br><br>
         <button type="submit">Rozwiąż równanie</button>
     </form>
 
     <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $a = $_POST['numA'];
-        $b = $_POST['numB'];
-        $c = $_POST['numC'];
+        if (isset($_POST["a"]) && isset($_POST["b"]) && isset($_POST["c"])) {
 
-        echo "<h2>Dane:</h2>";
-        echo "a = $a, b = $b, c = $c<br>";
+            $a = $_POST["a"];
+            $b = $_POST["b"];
+            $c = $_POST["c"];
 
-        if ($a == 0 || $b == 0 || $c == 0) {
-            echo "<strong>Każda zmienna musi być liczbą.</strong>";    
-        }
-        else {
+            echo "<p>a = $a, b = $b, c = $c</p>";
+
+            if (!(is_numeric($a) && is_numeric($b) && is_numeric($c))) {
+                echo "<p><strong>Kazda zmienna musi byc liczba</strong></p>";
+                return;
+            }
+
+            $a = intval($a);
+            $b = intval($b);
+            $c = intval($c);
+
+            if ($a == 0) {
+                echo "<p>To nie jest równanie kwadratowe (a = 0).</p>";
+                return;
+            } 
+            
             $delta = $b*$b - 4*$a*$c;
             $deltaN = number_format($delta, 2, ", ", " ");
             echo "delta = $delta<br>";
@@ -59,7 +74,6 @@
                 echo "Brak pierwiastków.";
             }
         }
-    }
     ?>
 </body>
 </html>

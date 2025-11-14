@@ -7,41 +7,48 @@
 </head>
 <body>
     <?php
-        $zakupy = ["chleb", "masło", "mleko", "ser", "jabłka"];
+        $products = ['banan', 'jabłko', 'gruszka', 'śliwka', 'pomidor'];
 
-        // a) Wyświetlenie tablicy trzema funkcjami
-        echo "<h3>a) Wyświetlenie tablicy:</h3>";
-        print_r($zakupy);
-        echo "<br>";
-        var_dump($zakupy);
-        echo "<br>";
+        echo "<h3>a)</h3>";
         echo "<pre>";
-        print_r($zakupy);
+        print_r($products);
+        echo "</pre>";
+        echo "<pre>";
+        var_dump($products);
+        echo "</pre>";
+        echo "<pre>";
+        var_export($products);
+        echo "</pre>";
+        sort($products);
+
+        echo "<h3>b)</h3>";
+        sort($products);
+        echo "<pre>";
+        print_r($products);
         echo "</pre>";
 
-        // b) Sortowanie rosnąco
-        sort($zakupy);
-        echo "<h3>b) Tablica po sortowaniu rosnącym:</h3>";
-        print_r($zakupy);
+        echo "<h3>c)</h3>";
+        array_unshift($products, 'ogórek');
+        $count = count($products);
+        echo "<pre>";
+        print_r($products);
+        echo "</pre>";
+        echo "Liczba elementów: $count<br>";
 
-        // c) Dodanie produktu na początku
-        array_unshift($zakupy, "kawa");
-        echo "<h3>c) Po dodaniu produktu na początku:</h3>";
-        echo "Liczba elementów: " . count($zakupy) . "<br>";
-        print_r($zakupy);
+        echo "<h3>d)</h3>";
+        array_pop($products);
+        rsort($products);
+        echo "<pre>";
+        print_r($products);
+        echo "</pre>";
 
-        // d) Usunięcie ostatniego i sortowanie malejące
-        array_pop($zakupy);
-        rsort($zakupy);
-
-        // e) Wyświetlenie listy
-        echo "<h3>e) Lista zakupów:</h3>";
+        echo "<h3>e)</h3>";
+        echo "<h2>Lista zakupów</h2>";
         echo "<ol>";
-        foreach ($zakupy as $produkt) {
-            echo "<li>$produkt</li>";
+        foreach($products as $item) {
+            echo "<li>$item</li>";
         }
         echo "</ol>";
     ?>
-
 </body>
 </html>
