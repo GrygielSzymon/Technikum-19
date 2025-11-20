@@ -13,8 +13,7 @@
             border-collapse: collapse;
         }
         th, td{
-            width: 50px;
-            height: 50px;
+            text-align: center;
         }
     </style>
 </head>
