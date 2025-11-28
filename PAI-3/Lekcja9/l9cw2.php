@@ -83,8 +83,11 @@
         <button type="submit">Wykonaj</button>
     </form>
 
-    <?php if ($result !== ""): ?>
-        <h2>Wynik: <?php echo $result; ?></h2>
-    <?php endif; ?>
+    <?php 
+        if ($result !== "")
+        {
+            echo "<h2>Wynik: ". $result . "</h2>";
+        }
+    ?>
 </body>
 </html>

@@ -33,13 +33,22 @@
     </form>
     <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $height = $_POST["height"];
-            $sign = $_POST["sign"];
-            for ($i=1; $i <= $height; $i++) { 
-                for ($j=1; $j <= $i; $j++) { 
-                    echo $sign;
+            if (isset($_POST["height"]) && isset($_POST["sign"])) {
+                $height = $_POST["height"];
+                $sign = $_POST["sign"];
+
+
+                if ($height < 0) {
+                    echo "<p><strong>Nie da się utworzyć piramidy!!!</strong></p>";
                 }
-                echo "<br>";
+                else {
+                    for ($i=1; $i <= $height; $i++) { 
+                        for ($j=1; $j <= $i; $j++) { 
+                            echo $sign;
+                        }
+                        echo "<br>";
+                    }
+                }
             }
         }
     ?>
