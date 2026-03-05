@@ -18,6 +18,24 @@ footer{
     display: flex;
     justify-content: center;
 }
+.opinia {
+	background-color: white;
+	color: DimGray;
+	width: 60%;
+	height: 220px;
+	margin: 40px auto;
+	box-shadow: 0 0 10px 5px DimGray;
+}
+img {
+	float: left;
+	margin: 10px;
+	border-radius: 10px;
+}
+blockquote {
+	padding: 10px;
+	font-size: 150%;
+	font-style: italic;
+}
 section{
     background-color: tomato;
     color: white;
