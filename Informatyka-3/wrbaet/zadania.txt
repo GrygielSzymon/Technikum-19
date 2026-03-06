@@ -1,0 +1,8 @@
+1.Napisz program, który wczyta liczby z pliku i wypisze tylko te, które są parzyste.
+2.Oblicz sumę wszystkich liczb z pliku liczby_przykład.txt.
+3.Znajdź największą i najmniejszą liczbę w pliku.
+4. Policz, ile liczb w pliku jest podzielnych przez 3 i 5 jednocześnie.
+--------------
+5.Dla każdej liczby z pliku wypisz jej reprezentację binarną (używając funkcji bin()), Przekonwertuj każdą liczbę z pliku na system binarny i zapisz wyniki do nowego pliku binarne.txt.
+6.Sprawdź, ile liczb w pliku ma w swojej reprezentacji binarnej dokładnie 5 jedynek.
+7.Stwórz nową listę zawierającą tylko te liczby, które po zapisaniu binarnym są palindromami.
