@@ -40,7 +40,8 @@ for liczba in liczby:
 
 print("Ilość:", licznik)
 
-#7palindromy = []
+#7
+palindromy = []
 
 for liczba in liczby:
     b = bin(liczba)[2:]
@@ -59,7 +60,8 @@ for liczba in liczby:
 
 print("Max długość:", max_dl)
 
-#9counter = 0
+#9
+counter = 0
 for n in numbers:
     if n[:3] == "111":
         counter += 1
