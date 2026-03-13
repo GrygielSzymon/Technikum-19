@@ -1,0 +1,54 @@
+body{
+    font-family: Helvetica;
+    background-color: #FFE4B5;
+}
+header{
+    display: flex;
+}
+.baner{
+    background-color: #4B0082;
+    color: white;
+    text-align: center;
+    width: 75%;
+    height: 100px;
+    font-size: 150%;
+}
+.banerLogo{
+    width: 25%;
+    height: 100px;
+}
+.leftRight{
+    display: flex;
+}
+.left{
+    width: 45%;
+    height: 300px;
+}
+.right{
+    width: 55%;
+    height: 300px;
+    text-align: center;
+}
+form{
+    padding: 40px;
+}
+main{
+    background-color: #4B0082;
+    padding: 60px;
+}
+table{
+    color: white;
+    text-align: center;
+    width: 90%;
+    border: 1px dashed yellow;
+    border-collapse: collapse;
+}
+tr:hover{
+    background-color: #9370DB;
+    color: yellow;
+}
+footer{
+    background-color: #4B0082;
+    color: white;
+    padding: 40px;
+}
