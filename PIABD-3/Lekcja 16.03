@@ -1,0 +1,40 @@
+1.DELIMITER //
+
+CREATE PROCEDURE moja_proc()
+
+BEGIN
+SELECT ImieAgenta, NazwiskoAgenta, DataZatrudnienia
+FROM agenci;
+END //
+
+DELIMITER ;
+
+2. DELIMITER //
+
+CREATE PROCEDURE pokaz_na_litere(IN litera CHARACTER)
+
+BEGIN
+SELECT ImieAgenta, NazwiskoAgenta, DataZatrudnienia
+FROM agenci
+WHERE NazwiskoAgenta LIKE CONCAT(litera, '%');
+END //
+
+DELIMITER ;
+
+CALL pokaz_na_litere("A")
+
+3.DELIMITER //
+
+CREATE PROCEDURE typCoPracuje(IN rok INT)
+
+BEGIN
+
+SELECT ImieAgenta,NazwiskoAgenta,DataZatrudnienia
+FROM agenci
+WHERE -YEAR(now()) - YEAR(DataZatrudnienia) <= rok ;
+
+END //
+
+CALL typCoPracuje(1997)
+
+4. 
