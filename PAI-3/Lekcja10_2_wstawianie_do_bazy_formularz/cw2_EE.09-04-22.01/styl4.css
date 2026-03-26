@@ -1,41 +1,56 @@
-body{
+body {
     font-family: Garamond;
 }
-header{
+
+header {
     background-color: saddlebrown;
     color: white;
     text-align: center;
     height: 50px;
 }
-main{
+
+main {
     display: flex;
 }
-.left{
+
+.left {
     background-color: tan;
     height: 500px;
     width: 40%;
 }
-.rightTop, .rightBottom{
-    background-color: tan;
-    height: 250px;
+
+.right {
+    display: flex;
+    flex-direction: column;
     width: 60%;
 }
-footer{
+
+.rightTop,
+.rightBottom {
+    background-color: tan;
+    height: 250px;
+}
+
+footer {
     background-color: saddlebrown;
     color: white;
 }
-form{
+
+form {
     background-color: saddlebrown;
     color: white;
     padding: 10px 30px;
     width: 300px;
 }
-input{
+
+input {
     padding: 5px;
 }
-p::before{
-    content: "STATUS";
+
+p::before {
+    content: "STATUS: ";
 }
+
 h1 {
     margin: 0;
 }
