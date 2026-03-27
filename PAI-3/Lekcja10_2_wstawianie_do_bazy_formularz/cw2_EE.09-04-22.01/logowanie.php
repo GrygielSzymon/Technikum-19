@@ -44,7 +44,6 @@
                         $passR = $_POST['passR'];
 
                         $err = FALSE;
-
                         if ($login === "" || $pass === "" || $passR === "") {
                             echo "<p>Wypełnij wszystkie pola</p>";
                             $err = true;
@@ -66,7 +65,15 @@
                             }
                         }
 
+                        if (!$err = FALSE) {
+                            $has = sha1($pass);
+                            $kw = "INSERT INTO uzytkownicy VALUES (NULL, '$login', '$has');";
+                            mysqli_query($con, $kw);
+                            echo "<p>Konto zostało dodane</p>";
+                        }
+
                     }
+                    mysqli_close($con);
                 ?>
             </section>
 
