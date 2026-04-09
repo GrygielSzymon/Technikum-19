@@ -1,87 +1,160 @@
 namespace zad1
 {
-    class Produkt
-    {
-        public string Nazwa { get; set; }
-        public decimal Cena { get; set; }
-
-        public Produkt(string nazwa, decimal cena)
-        {
-            Nazwa = nazwa;
-            Cena = cena;
-        }
-    }
     internal class Program
     {
+        public class Product
+        {
+            public string Name { get; set; }
+            public decimal Price { get; set; }
+
+            public Product(string name, decimal price)
+            {
+                Name = name;
+                Price = price;
+            }
+        }
+
+
+
         static void Main(string[] args)
         {
 
-
-            Produkt[] produkty = new Produkt[5];
-
-            produkty[0] = new Produkt("kiełbasa", 12.1m);
-            produkty[1] = new Produkt("Bochen", 312.21m);
-            produkty[2] = new Produkt("Kot", 213.2m);
-            produkty[3] = new Produkt("Mieso", 1233.123m);
-            produkty[4] = new Produkt("Oliwa", 2313.312m);
-
-            // zadanie 2
-            Array.Sort(produkty, (a, b) => a.Nazwa.CompareTo(b.Nazwa));
-
-            Console.WriteLine("Produkty po sortowaniu:");
-            foreach (var p in produkty)
+            //1
+            Product[] products =
             {
-                Console.WriteLine(p.Nazwa + " - " + p.Cena);
-            }
+                new Product("MacBook", 1500.00m),
+                new Product("Iphone", 800.00m),
+                new Product("AirPods", 200.00m),
+                new Product("IMac", 300.00m)
+            };
 
+            Console.WriteLine("Produkty: ");
+            foreach (var product in products)
+            {
+                Console.WriteLine($"{product.Name}, cena: {product.Price} ");
+            }
             Console.WriteLine();
 
-            string szukanaNazwa = "Kot";
-
-            // zadanie 3
-            Console.WriteLine("Wyszukiwanie liniowe:");
-            bool znaleziono = false;
-
-            foreach (var p in produkty)
+            Console.WriteLine("Produkty posortowane po nazwie");
+            SortProductsByName(products);
+            foreach (var product in products)
             {
-                if (p.Nazwa == szukanaNazwa)
-                {
-                    Console.WriteLine("Znaleziono: " + p.Nazwa + " - " + p.Cena);
-                    znaleziono = true;
-                    break;
-                }
+                Console.WriteLine($"{product.Name}, cena: {product.Price} ");
             }
-
-            if (!znaleziono)
-                Console.WriteLine("Nie znaleziono produktu");
-
             Console.WriteLine();
 
-            // zadanie 4
-            Console.WriteLine("Wyszukiwanie binarne:");
+            Console.WriteLine("Wyszukiwanie liniowe(Iphone): ");
+            LinearSearch(products, "Iphone");
+            Console.WriteLine();
 
-            int lewy = 0;
-            int prawy = produkty.Length - 1;
+            Console.WriteLine("Wyszukiwanie binarne(IMac): ");
+            BinarySearch(products, "IMac");
+            Console.WriteLine();
 
-            while (lewy <= prawy)
+            Console.WriteLine("Największa, najmniejsza, średnia cena");
+            MaxMinAvg(products);
+            Console.WriteLine();
+
+            Console.WriteLine("Po usunięciu");
+            DeleteProduct(products, "AirPods");
+        }
+        // 2
+        public static void SortProductsByName(Product[] products)
+        {
+            for (int i = 0; i < products.Length - 1; i++)
             {
-                int srodek = (lewy + prawy) / 2;
-
-                int porownanie = string.Compare(produkty[srodek].Nazwa, szukanaNazwa);
-
-                if (porownanie == 0)
+                for (int j = 0; j < products.Length - 1; j++)
                 {
-                    Console.WriteLine("Znaleziono: " + produkty[srodek].Nazwa + " - " + produkty[srodek].Cena);
-                    break;
+                    if (string.Compare(products[j].Name, products[j + 1].Name) > 0)
+                    {
+                        var temp = products[j];
+                        products[j] = products[j + 1];
+                        products[j + 1] = temp;
+                    }
                 }
-                else if (porownanie < 0)
+            }
+        }
+
+        // 3.1
+        public static void LinearSearch(Product[] products, string name)
+        {
+            for (int i = 0; i < products.Length; i++)
+            {
+                if (products[i].Name == name)
                 {
-                    lewy = srodek + 1;
+                    Console.WriteLine("Indeks: " + i);
+                    return;
+                }
+            }
+        }
+
+        // 3.2
+        public static void BinarySearch(Product[] products, string name)
+        {
+            int left = 0;
+            int rigth = products.Length - 1;
+
+            while (left <= rigth)
+            {
+                int mid = (left + rigth) / 2;
+                int resultCompare = string.Compare(products[mid].Name, name);
+
+                if (resultCompare == 0)
+                {
+                    Console.WriteLine("Indeks: " + mid);
+                    return;
+                }
+                else if (resultCompare < 0)
+                {
+                    left = mid + 1;
                 }
                 else
                 {
-                    prawy = srodek - 1;
+                    rigth = mid - 1;
                 }
+            }
+        }
+
+        // 4
+        public static void MaxMinAvg(Product[] products)
+        {
+            if (products.Length == 0) return;
+            decimal maxPrice = products[0].Price;
+            decimal minPrice = products[0].Price;
+            decimal sumPrice = 0;
+            foreach (var product in products)
+            {
+                if (product.Price > maxPrice) maxPrice = product.Price;
+                if (product.Price < minPrice) minPrice = product.Price;
+                sumPrice += product.Price;
+            }
+            decimal avgPrice = sumPrice / products.Length;
+            Console.WriteLine($"Max: {maxPrice}, Min: {minPrice}, Avg: {avgPrice}");
+        }
+
+        // 5
+        public static void DeleteProduct(Product[] products, string nameDelete)
+        {
+            int count = 0;
+            foreach (var product in products)
+            {
+                if (product.Name != nameDelete) count++;
+            }
+
+            Product[] newProducts = new Product[count];
+            int sum = 0;
+
+            foreach (var product in products)
+            {
+                if (product.Name != nameDelete)
+                {
+                    newProducts[sum] = product;
+                    sum++;
+                }
+            }
+            foreach (var product in newProducts)
+            {
+                Console.WriteLine($"{product.Name}, cena: {product.Price} ");
             }
         }
     }
