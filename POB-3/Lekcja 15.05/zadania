@@ -1,0 +1,66 @@
+namespace zadania
+{
+    //zadanie 1
+    public class Palindrom
+    {
+        public bool CzyPalindrom(string tekst, int lewy, int prawy)
+        {
+            if (lewy >= prawy)
+                return true;
+
+            if (tekst[lewy] != tekst[prawy])
+                return false;
+
+            return CzyPalindrom(tekst, lewy + 1, prawy - 1);
+        }
+
+    }
+
+
+    //zadanie 2
+    class Matematyka
+    {
+        public int NWD(int a, int b)
+        {
+            if (b == 0)
+                return a;
+
+            return NWD(b, a % b);
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            //zadanie 1
+            Palindrom p = new Palindrom();
+
+            Console.Write("Podaj tekst: ");
+            string tekst = Console.ReadLine();
+
+            bool wynik = p.CzyPalindrom(tekst, 0, tekst.Length - 1);
+
+            if (wynik)
+            {
+                Console.WriteLine("Palindrom");
+            }  
+            else
+            {
+                Console.WriteLine("Nie paliondrom");
+            }
+
+
+            //zadanie 2
+            Matematyka m = new Matematyka();
+
+            Console.Write("Podaj liczbe 1: ");
+            int a = int.Parse(Console.ReadLine());
+
+            Console.Write("Podaj liczbe 2: ");
+            int b = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("NWD: " + m.NWD(a, b));
+        }
+    }
+}
