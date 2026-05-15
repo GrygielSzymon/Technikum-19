@@ -8,30 +8,84 @@
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
-    <header>
+    <section class="kontener">
+        <header>
+            <img src="animacje.gif" alt="Pogotowie komputerowe">
+        </header>
 
-    </header>
+        <nav>
+            <a href="index.html">Strona Główna</a>
+            <a href="kontakt.html">Kontakt</a>
+        </nav>
 
-    <nav>
+        <main>
+            <section class="left">
 
-    </nav>
+            </section>
+            
+            <section class="center">
+                <h2>Kontakt</h2>
+                    <table>
+                        <tr>
+                            <td>imię: </td>
+                            <td><input type="text" id="name"></td>
+                        </tr>
+                        <tr>
+                            <td>Nazwisko: </td>
+                            <td><input type="text" id="surname"></td>
+                        </tr>
+                        <tr>
+                            <td>E-mail: </td>
+                            <td><input type="email" id="email"></td>
+                        </tr>
+                        <tr>
+                            <td>Zgłoszenie: </td>
+                            <td>
+                                <select id="application">
+                                    <option>naprawa komputerów</option>
+                                    <option>odzyskiwanie danych</option>
+                                    <option>wirusy</option>
+                                    <option>konfiguracja LAN</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="checkbox" id="show" checked>Wyślij kopię wiadomości</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button type="reset">Czyść</button> <button id="send">Wyślij</button></td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <p id="result"></p>
+            </section>
 
-    <main>
-        <section class="left">
+            <section class="right">
 
-        </section>
+            </section>
+        </main>
+
         
-        <section class="center">
+        <script>
+            const button = document.querySelector("#send");
 
-        </section>
+            button.addEventListener("click", function(){
+                let name = document.querySelector("#name").value;
+                let surname = document.querySelector("#surname").value;
+                let email = document.querySelector("#email").value;
+                let application = document.querySelector("#application").value;
+                let show = document.querySelector("#show");
+                let result = document.querySelector("#result");
 
-        <section class="right">
+                result.innerHTML = `${name} ${surname} <br> ${email} <br> Usługa: ${application}`;
+            })
+        </script>
 
-        </section>
-    </main>
-
-    <footer>
-
-    </footer>
+        <footer>
+            <p><i>Autor: Szymon Grygiel</i></p>
+        </footer>
+    </section>
 </body>
 </html>
