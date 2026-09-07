@@ -1,0 +1,15 @@
+1. Napisz program, który wczytuje dwie liczby całkowite i wypisuje ich sumę, różnicę, iloczyn oraz iloraz.
+2. Napisz program obliczający pole i obwód prostokąta na podstawie wczytanych boków.
+3. Napisz program zamieniający temperaturę podaną w stopniach Celsjusza na Fahrenheity.
+4. Napisz program obliczający największy wspólny dzielnik dwóch liczb za pomocą algorytmu Euklidesa.
+5. Napisz program obliczający najmniejszą wspólną wielokrotność dwóch liczb.
+6. Napisz program obliczający sumę cyfr podanej liczby całkowitej.
+7. Napisz program sprawdzający, czy podana liczba jest palindromem (czytana tak samo od przodu i od tyłu).
+8. Napisz program sprawdzający, czy podana liczba jest liczbą pierwszą.
+9. Napisz program wypisujący wszystkie liczby pierwsze z podanego zakresu.
+10. Napisz program obliczający silnię podanej liczby.
+11. Napisz program generujący n początkowych wyrazów ciągu Fibonacciego.
+12. Napisz program zamieniający wszystkie litery w podanym tekście na wielkie oraz na małe.
+13. Napisz program zliczający liczbę samogłosek i spółgłosek w podanym tekście.
+14. Napisz program sprawdzający, czy podany tekst jest palindromem (bez uwzględniania wielkości liter).
+15. Napisz program odwracający kolejność słów w podanym zdaniu.
