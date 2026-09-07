@@ -1,0 +1,280 @@
+KLASA System W JAVIE — KRÓTKI PRZEWODNIK
+============================================================
+
+CZYM JEST System
+------------------------------------------------------------
+System to klasa z pakietu java.lang (nie trzeba jej importować,
+jest dostępna zawsze). Jest final — nie da się jej rozszerzyć ani
+utworzyć przez new. W praktyce to zestaw statycznych pól i metod
+narzędziowych, głównie do komunikacji programu z otoczeniem
+(konsola, zegar, środowisko systemowe).
+
+
+TRZY POLA — STANDARDOWE STRUMIENIE
+------------------------------------------------------------
+System.out   pole typu PrintStream — standardowe wyjście (konsola)
+System.in    pole typu InputStream — standardowe wejście (klawiatura)
+System.err   pole typu PrintStream — standardowe wyjście błędów
+             (osobny kanał od System.out — przydatny, gdy out jest
+             przekierowane np. do pliku)
+
+KLUCZOWA RÓŻNICA WZGLĘDEM C#:
+W C# Console.WriteLine(...) to metoda statyczna wywołana wprost na
+klasie Console. W Javie System.out to POLE — referencja do gotowego
+obiektu PrintStream. println()/print()/printf() to metody
+INSTANCYJNE klasy PrintStream, wywołane na tym obiekcie. Sam System
+nie ma żadnej metody print/println — stąd "podwójna kropka":
+
+    System.out.println("Cześć");
+    //  ↑        ↑        ↑
+    //  klasa    pole     metoda instancyjna PrintStream,
+    //           (typu    wywołana na obiekcie z pola out
+    //           PrintStream)
+
+Ponieważ System.err jest tego samego typu (PrintStream), ma
+dokładnie te same metody co System.out — print(), println(),
+printf() — tylko pisze do innego strumienia.
+
+
+UŻYCIE System.out
+------------------------------------------------------------
+    System.out.print("bez nowej linii");
+    System.out.println("z nową linią na końcu");
+    System.out.printf("wiek: %d%n", 18);
+
+
+UŻYCIE System.in
+------------------------------------------------------------
+System.in samo w sobie to surowy strumień bajtów — niewygodny w
+użyciu wprost, dlatego prawie zawsze owija się go w Scanner:
+
+    Scanner wejscie = new Scanner(System.in);
+    System.out.print("Podaj wiek: ");
+    int wiek = wejscie.nextInt();
+
+
+INNE STATYCZNE METODY System (poza in/out/err)
+------------------------------------------------------------
+To już nie pola, tylko metody narzędziowe:
+
+    System.currentTimeMillis()      long — czas w ms od 1.01.1970
+                                     (mierzenie wydajności kodu)
+    System.nanoTime()               long — precyzyjniejszy pomiar
+                                     czasu, tylko do liczenia różnic
+    System.exit(0)                  kończy program natychmiast,
+                                     z podanym kodem wyjścia
+    System.arraycopy(a,0,b,0,5)     szybkie kopiowanie fragmentu
+                                     tablicy a do tablicy b
+    System.getProperty("os.name")   odczyt właściwości systemu
+                                     (system operacyjny, wersja Javy...)
+    System.getenv("PATH")           odczyt zmiennej środowiskowej
+    System.lineSeparator()          "\n" albo "\r\n" zależnie od
+                                     systemu operacyjnego
+
+Rzadziej używane, ale warte znajomości:
+    System.setOut(...) / setErr(...) / setIn(...)
+                                     podmienia, dokąd faktycznie idzie
+                                     dany strumień (np. przekierowanie
+                                     na plik)
+    System.identityHashCode(obj)    zwraca hash niezależny od tego,
+                                     czy klasa nadpisała hashCode()
+
+
+System TO CZĘŚĆ WIĘKSZEJ RODZINY — PAKIET java.lang
+------------------------------------------------------------
+System nie jest wyjątkiem — to jedna z klas pakietu java.lang, a ten
+pakiet jest JEDYNYM, który Java importuje automatycznie do każdego
+pliku (nigdy nie piszesz import java.lang.System;). Wszystko inne
+(kolekcje, Scanner, pliki, Android) wymaga jawnego import.
+
+Najważniejsze klasy z java.lang, dostępne "za darmo" tak jak System:
+
+    String                 teksty
+    Math                   Math.max(), Math.min(), Math.abs(),
+                            Math.sqrt(), Math.round(), Math.random(),
+                            stała Math.PI
+    Integer, Double,       klasy opakowujące (wrapper) typów
+    Boolean, Character,    prymitywnych — Integer.parseInt("18"),
+    Long                   Double.parseDouble("3.14"), plus
+                            autoboxing przy kolekcjach (List<Integer>)
+    Object                 korzeń hierarchii klas w Javie — każda
+                            klasa dziedziczy po niej niejawnie, stąd
+                            equals()/toString()/hashCode() można
+                            nadpisać w KAŻDEJ klasie
+    StringBuilder          budowanie tekstu w pętli bez tworzenia
+                            setek obiektów String (String jest
+                            niemutowalny)
+    Exception,             cała hierarchia wyjątków z Etapu 00.8:
+    RuntimeException,      NullPointerException, ArithmeticException,
+    Error i podklasy       NumberFormatException...
+    Thread, Runnable       podstawy wątków (przydatne przy Etapie 04
+                            — sieć w Androidzie)
+
+Poza java.lang najczęściej sięga się do:
+    java.util.*   Scanner, ArrayList, HashMap, Random — WYMAGA import
+    java.io.*     pliki — WYMAGA import
+    android.*/    Activity, View, RecyclerView itd. — to już nie jest
+    androidx.*    "za darmo", zawsze trzeba importować
+
+
+TYPOWE BŁĘDY (przy przechodzeniu z C#)
+------------------------------------------------------------
+- system.out zamiast System.out — Java rozróżnia wielkość liter
+- printl zamiast println — literówka (print + LINE)
+- próba System.print(...) — System nie ma takiej metody, print/
+  println/printf należą do PrintStream (pola out/err)
+
+
+NA EGZAMIN (INF.04)
+------------------------------------------------------------
+Realnie liczy się dobra znajomość System.out (wypisywanie) i
+System.in przez Scanner (wczytywanie) — to pojawia się w każdej
+aplikacji konsolowej w arkuszu praktycznym. currentTimeMillis() i
+exit() warto rozpoznawać, ale rzadko są centralnym tematem. Reszta
+metod to wiedza dodatkowa, nie priorytet.
+
+
+
+
+KLASA Scanner W JAVIE — WCZYTYWANIE Z KONSOLI
+============================================================
+
+CZYM JEST Scanner
+------------------------------------------------------------
+Scanner to klasa z pakietu java.util (WYMAGA importu — w
+przeciwieństwie do System). Służy do wczytywania danych — najczęściej
+z klawiatury (System.in), ale też z pliku czy tekstu. To odpowiednik
+Console.ReadLine() z C#, tyle że ma osobne metody na każdy typ
+danych, zamiast zawsze zwracać string do ręcznego parsowania.
+
+    import java.util.Scanner;
+
+    Scanner wejscie = new Scanner(System.in);
+
+Jeden obiekt Scanner tworzy się zwykle RAZ na cały program (albo raz
+na metodę) i używa wielokrotnie — nie twórz nowego Scanner(System.in)
+przy każdym wczytaniu.
+
+
+METODY DO WCZYTYWANIA — TYP PO TYPIE
+------------------------------------------------------------
+    wejscie.nextInt()       int      pojedyncza liczba całkowita
+    wejscie.nextLong()      long     liczba całkowita (większy zakres)
+    wejscie.nextDouble()    double   liczba zmiennoprzecinkowa
+    wejscie.nextBoolean()   boolean  "true"/"false"
+    wejscie.next()          String   JEDNO słowo (do najbliższej spacji)
+    wejscie.nextLine()      String   CAŁA linia, włącznie ze spacjami
+
+Przykład:
+    System.out.print("Podaj wiek: ");
+    int wiek = wejscie.nextInt();
+
+    System.out.print("Podaj wzrost (np. 178.5): ");
+    double wzrost = wejscie.nextDouble();
+
+    System.out.print("Podaj imię: ");
+    String imie = wejscie.next();          // jedno słowo
+
+    System.out.print("Podaj zdanie: ");
+    wejscie.nextLine();                    // patrz sekcja niżej — dlaczego to jest tu potrzebne
+    String zdanie = wejscie.nextLine();    // cała linia ze spacjami
+
+
+WCZYTYWANIE POJEDYNCZEGO ZNAKU (char)
+------------------------------------------------------------
+Scanner NIE MA metody nextChar() — trzeba wziąć pierwszy znak ze
+string:
+
+    System.out.print("Podaj literę: ");
+    char litera = wejscie.next().charAt(0);
+
+
+PUŁAPKA #1 — MIESZANIE nextInt()/nextDouble() z nextLine()
+------------------------------------------------------------
+To najczęstszy błąd zaczynających z Scannerem, praktycznie pewny
+temat na egzaminie.
+
+nextInt(), nextDouble(), next() itp. wczytują TYLKO samą wartość —
+znak nowej linii (Enter) zostaje "w buforze", nieprzeczytany. Kolejne
+wywołanie nextLine() natychmiast go odczyta i zwróci pustego stringa,
+zamiast czekać na Twój wpis.
+
+    int wiek = wejscie.nextInt();
+    String imie = wejscie.nextLine();   // BŁĄD: imie = "" (pusty string!)
+
+Rozwiązanie — dodatkowe, "puste" wejscie.nextLine() zaraz po
+nextInt()/nextDouble(), żeby skonsumować pozostały Enter:
+
+    int wiek = wejscie.nextInt();
+    wejscie.nextLine();                 // pochłania resztę linii z Entera
+    String imie = wejscie.nextLine();   // teraz działa poprawnie
+
+Ten problem NIE występuje, jeśli konsekwentnie używasz next() zamiast
+nextLine() — next() też pomija białe znaki przed kolejnym słowem.
+
+
+PUŁAPKA #2 — złe dane wejściowe (litery zamiast liczby)
+------------------------------------------------------------
+nextInt() rzuci InputMismatchException, jeśli użytkownik wpisze coś,
+co nie jest liczbą całkowitą (patrz Etap 00.8 — wyjątki). Na
+egzaminie zwykle wystarczy to obsłużyć przez try/catch:
+
+    try {
+        int wiek = wejscie.nextInt();
+    } catch (InputMismatchException e) {
+        System.out.println("To nie jest liczba!");
+        wejscie.nextLine();   // wyczyść błędne dane z bufora
+    }
+
+
+SPRAWDZANIE, CZY JEST JESZCZE COŚ DO WCZYTANIA
+------------------------------------------------------------
+Przydatne przy pętli "wczytuj, dopóki coś jest" (np. nieznana z góry
+liczba elementów):
+
+    while (wejscie.hasNextInt()) {
+        int liczba = wejscie.nextInt();
+        System.out.println("Wczytano: " + liczba);
+    }
+    // pętla kończy się, gdy wejście się skończy albo pojawi się
+    // coś, co nie jest liczbą całkowitą
+
+Odpowiedniki: hasNext() (jest jeszcze jakiekolwiek słowo),
+hasNextLine() (jest jeszcze linia), hasNextDouble() itd.
+
+
+PRZYKŁAD ZBIORCZY — wczytanie N liczb do listy
+------------------------------------------------------------
+    Scanner wejscie = new Scanner(System.in);
+    System.out.print("Ile liczb wczytać? ");
+    int n = wejscie.nextInt();
+
+    List<Integer> liczby = new ArrayList<>();
+    for (int i = 0; i < n; i++) {
+        System.out.print("Podaj liczbę " + (i + 1) + ": ");
+        liczby.add(wejscie.nextInt());
+    }
+    System.out.println("Suma: " + liczby.stream().mapToInt(Integer::intValue).sum());
+
+
+PORÓWNANIE Z C#
+------------------------------------------------------------
+C#:   string tekst = Console.ReadLine();
+      int liczba = int.Parse(Console.ReadLine());
+      — zawsze string, ręczne parsowanie do liczby
+
+Java: int liczba = wejscie.nextInt();
+      — Scanner ma osobną metodę na każdy typ, parsowanie "w locie",
+        ale kosztem pułapki z nextLine() opisanej wyżej
+
+
+SZYBKA ŚCIĄGA
+------------------------------------------------------------
+[ ] import java.util.Scanner;  na górze pliku
+[ ] Scanner wejscie = new Scanner(System.in);  raz na program
+[ ] nextInt/nextDouble/nextBoolean — pojedyncza wartość
+[ ] next() — jedno słowo, nextLine() — cała linia
+[ ] po nextInt()/nextDouble() przed nextLine() — dodatkowe puste
+    nextLine(), żeby pochłonąć Enter
+[ ] nextChar() nie istnieje — użyj next().charAt(0)
+[ ] złe dane wejściowe → InputMismatchException (try/catch)
