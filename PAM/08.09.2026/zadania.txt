@@ -1,0 +1,36 @@
+Kolekcje w Javie (pakiet java.util) to gotowe struktury danych do przechowywania 
+i przetwarzania grup obiektów — w programowaniu na Androida są używane niemal wszędzie, 
+np. do trzymania list elementów wyświetlanych w RecyclerView, wyników zapytań do bazy danych 
+czy danych pobranych z sieci. 
+  
+Najważniejsze to: 
+List (ArrayList, LinkedList) — uporządkowana kolekcja z duplikatami i dostępem po indeksie; 
+Set (HashSet, LinkedHashSet, TreeSet) — zbiór bez duplikatów, przydatny do szybkiego sprawdzania unikalności; 
+Map (HashMap, LinkedHashMap, TreeMap) — pary klucz-wartość, świetne do szybkiego wyszukiwania danych po kluczu; 
+Queue/Deque (LinkedList, ArrayDeque) — kolejki FIFO/LIFO, używane np. do przetwarzania zadań w kolejności. 
+  
+Warto też znać interfejs Iterator do bezpiecznego przechodzenia po kolekcji oraz klasę Collections 
+z gotowymi metodami pomocniczymi (sortowanie, wyszukiwanie, odwracanie kolejności).
+
+Uzyjcie java.util.Random....
+
+1. Napisz program, który wczytuje n liczb całkowitych i przechowuje je w ArrayList, a następnie wypisuje ich sumę i średnią.
+2. Napisz program usuwający z ArrayList wszystkie elementy o wartości podanej przez użytkownika.
+3. Napisz program znajdujący największą i najmniejszą wartość w liście liczb.
+4. Napisz program sortujący listę liczb rosnąco i malejąco za pomocą klasy Collections.
+5. Napisz program, który odwraca kolejność elementów w liście bez użycia gotowej metody reverse().
+6. Napisz program usuwający duplikaty z listy liczb, zachowując kolejność pierwszego wystąpienia.
+7. Napisz program zliczający, ile razy każda liczba występuje w liście, i wypisujący wynik za pomocą HashMap.
+8. Napisz program tworzący HashSet z podanej listy słów i wypisujący tylko unikalne wyrazy.
+9. Napisz program sprawdzający, czy dwa zbiory (HashSet) mają jakiekolwiek elementy wspólne.
+  10. Napisz program obliczający część wspólną (przecięcie) dwóch zbiorów liczb.
+11. Napisz program obliczający sumę teoriomnogościową i różnicę dwóch zbiorów liczb.
+12. Napisz program wczytujący imiona i wieki osób do HashMap<String, Integer> i wypisujący osobę o najwyższym wieku.
+13. Napisz program zliczający częstość występowania każdego słowa w podanym tekście za pomocą HashMap.
+14. Napisz program sortujący mapę HashMap<String, Integer> po wartościach malejąco.
+15. Napisz program korzystający z TreeMap do przechowywania danych posortowanych automatycznie po kluczu.
+16. Napisz program symulujący kolejkę (Queue) obsługi klientów — dodawanie i obsługiwanie w kolejności FIFO.
+17. Napisz program symulujący stos (Stack lub Deque) sprawdzający poprawność domknięcia nawiasów w wyrażeniu.
+18. Napisz program filtrujący listę obiektów (np. klasy Osoba z polami imię i wiek) i zwracający tylko osoby pełnoletnie.
+19. Napisz program sortujący listę obiektów własnej klasy po wybranym polu za pomocą Comparator.
+20. Napisz program łączący dane z dwóch list (np. identyfikatory i nazwy) w jedną mapę HashMap<Integer, String>.
