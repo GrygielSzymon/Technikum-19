@@ -1,0 +1,23 @@
+$nodePath = "$env:LOCALAPPDATA\Programs\node"
+$npmPath  = "$env:APPDATA\npm"
+$env:Path = "$nodePath;$npmPath;$env:Path"
+$userPath = [Environment]::GetEnvironmentVariable("Path", "User")
+if ([string]::IsNullOrWhiteSpace($userPath)) {
+    $userPath = ""
+}
+$pathEntries = @(
+    $userPath -split ';' |
+    Where-Object { -not [string]::IsNullOrWhiteSpace($_) }
+)
+if (-not ($pathEntries | Where-Object { $_.TrimEnd('\') -ieq $nodePath.TrimEnd('\') })) {
+    $pathEntries += $nodePath
+}
+if (-not ($pathEntries | Where-Object { $_.TrimEnd('\') -ieq $npmPath.TrimEnd('\') })) {
+    $pathEntries += $npmPath
+}
+[Environment]::SetEnvironmentVariable(
+    "Path",
+    ($pathEntries -join ';'),
+    "User"
+)
+Unblock-File -LiteralPath "$env:LOCALAPPDATA\Programs\node\npm.ps1"
