@@ -1,0 +1,3 @@
+12. Napisz program wczytujący imiona i wieki osób do HashMap<String, Integer> i wypisujący osobę o najwyższym wieku.
+13. Napisz program zliczający częstość występowania każdego słowa w podanym tekście za pomocą HashMap.
+14. Napisz program sortujący mapę HashMap<String, Integer> po wartościach malejąco.
