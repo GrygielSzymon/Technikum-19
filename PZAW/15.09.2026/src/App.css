@@ -1,0 +1,18 @@
+body{
+  background-color: aqua;
+}
+h2{
+  color: red;
+  text-align: center;
+}
+h3{
+  color: blue;
+}
+main{
+  margin-left: 10%;
+}
+img{
+  width: 15%;
+  display: block;
+  margin: auto;
+}
